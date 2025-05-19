@@ -4,35 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>宏策智能 - AI 驅動的智慧決策與產業解決方案提供者</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pure-black-bg: #000000; /* 純黑色背景 */
-            --nav-bg-color: #0D1B2A; /* 導航欄的深藍灰，比純黑稍亮 */
-            --card-bg-color-on-black: #101C2C; /* 深色背景上卡片的顏色，比純黑稍亮一點以區分 */
-            --primary-text-on-black: #EAEAEA; /* 主要文字顏色，近乎白色 */
-            --secondary-text-on-black: #B0BEC5; /* 次要文字顏色，稍暗的淺灰 */
-            --accent-color: #00D1B2;   /* 鮮豔的青色作為強調色 (類似 met-ai) */
-            --accent-hover-color: #00A78F; /* 強調色懸停 */
-            --text-light: #FFFFFF; /* 用於最需要突出的文字，如按鈕文字 */
-            --border-color-on-black: #2A3B4D; /* 深色背景下的邊框 */
-
-            /* 保留一些之前的變數，以防萬一或用於特定元素 */
-            --primary-color-original: #0A2342;
-            --secondary-color-original: #001F3F;
-
-
-            --border-radius-main: 10px;
-            --border-radius-large: 12px;
+            --pure-black-bg: #000000;
+            --nav-bg-color: #0D1B2A;
+            --card-bg-color-on-black: #101C2C;
+            --primary-text-on-black: #EAEAEA;
+            --secondary-text-on-black: #B0BEC5;
+            --accent-color: #00D1B2;
+            --accent-hover-color: #00A78F;
+            --text-light: #FFFFFF;
+            --border-color-on-black: #2A3B4D;
+            --border-radius-main: 0.625rem; /* 10px */
+            --border-radius-large: 0.75rem; /* 12px */
             --card-shadow-on-black: 0 8px 25px rgba(0, 0, 0, 0.35);
-            --section-padding: 80px 0;
+            --section-padding-y: 5rem; /* 80px */
         }
 
         body {
             font-family: 'Inter', 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
             line-height: 1.7;
             background-color: var(--pure-black-bg) !important;
             color: var(--primary-text-on-black) !important;
@@ -40,44 +34,44 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        header { display: none; }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            background-color: var(--nav-bg-color);
-            padding: 1rem 2rem;
+        /* Navbar adjustments */
+        .navbar {
+            background-color: var(--nav-bg-color) !important;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
-        nav .nav-logo img {
+        .navbar-brand img { /* Styling for the image logo */
             height: 45px;
-            filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1); /* Makes a dark logo white */
         }
-        nav .nav-links { display: flex; align-items: center; }
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin: 0 1rem;
+        /* If using text logo, style .navbar-brand directly */
+        /*
+        .navbar-brand {
+            color: var(--text-light) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        */
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
             font-weight: 600;
             font-size: 0.95rem;
-            padding: 0.5rem 0;
+            padding: 0.5rem 0 !important;
+            margin: 0 0.8rem;
             border-bottom: 2px solid transparent;
             transition: color 0.3s ease, border-bottom-color 0.3s ease;
         }
-        nav a:hover, nav a.active {
-            color: var(--accent-color);
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--accent-color) !important;
             border-bottom-color: var(--accent-color);
+        }
+        .navbar-toggler {
+            border-color: rgba(255,255,255,0.2);
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
         .nav-buttons .toggle-btn {
             background-color: rgba(255,255,255,0.1);
@@ -94,15 +88,15 @@
             background-color: var(--accent-color);
             border-color: var(--accent-color);
         }
-        body > .toggle-btn { display: none; }
 
-        /* Hero Section - Full Width with Particles on Black BG */
+        /* Hero Section */
         .hero-section-fullwidth {
-            background-color: transparent; /* Particles will handle actual BG via JS config */
+            background-color: transparent;
             color: var(--text-light);
-            padding: var(--section-padding);
+            padding-top: var(--section-padding-y);
+            padding-bottom: var(--section-padding-y);
             text-align: center;
-            min-height: 70vh; /* Adjusted min-height */
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -125,69 +119,68 @@
         }
         .hero-section-fullwidth .content-wrapper h1,
         .hero-section-fullwidth .content-wrapper p {
-            color: var(--text-light) !important; /* Ensure text is white */
+            color: var(--text-light) !important;
         }
         .hero-section-fullwidth h1 {
-            font-size: 3rem; /* Slightly smaller for better fit */
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             line-height: 1.25;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Stronger shadow on black */
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
         .hero-section-fullwidth p {
-            font-size: 1.2rem; /* Slightly smaller */
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
             line-height: 1.7;
             opacity: 0.9;
         }
-        .hero-buttons a {
-            padding: 0.9rem 2.2rem;
+        .hero-buttons .btn {
+            padding: 0.8rem 2rem;
             font-size: 1rem;
             margin: 0.5rem;
             border-radius: 50px;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-            border: 2px solid transparent;
             text-decoration: none;
-            position: relative; /* Ensure buttons are above particles if any overlap */
+            position: relative;
             z-index: 1;
         }
-        .hero-buttons .cta-button {
+        .hero-buttons .btn-primary-custom {
             background-color: var(--accent-color);
             color: var(--text-light);
             border-color: var(--accent-color);
         }
-        .hero-buttons .cta-button:hover {
+        .hero-buttons .btn-primary-custom:hover {
             background-color: var(--accent-hover-color);
             border-color: var(--accent-hover-color);
             transform: translateY(-2px);
         }
-        .hero-buttons .secondary-button {
-            background-color: transparent;
-            border: 2px solid var(--accent-color); /* Use accent color for border on dark */
+        .hero-buttons .btn-outline-light-custom {
+            border: 2px solid var(--accent-color);
             color: var(--accent-color);
         }
-        .hero-buttons .secondary-button:hover {
+        .hero-buttons .btn-outline-light-custom:hover {
             background-color: var(--accent-color);
             color: var(--text-light);
             transform: translateY(-2px);
         }
 
-        /* Section Styling - All sections black background */
+        /* General Section Styling */
         .section-wrapper {
             background-color: var(--pure-black-bg) !important;
             color: var(--primary-text-on-black) !important;
-            padding: var(--section-padding);
+            padding-top: var(--section-padding-y);
+            padding-bottom: var(--section-padding-y);
         }
-        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title { text-align: center; margin-bottom: 3.5rem; }
         .section-title h2 {
-            font-size: 2.3rem; /* Slightly smaller */
+            font-size: 2.2rem;
             color: var(--text-light) !important;
             margin-bottom: 0.5rem;
             border-bottom: none;
             display: inline-block;
             position: relative;
-            padding-bottom: 0.8rem;
+            padding-bottom: 0.7rem;
         }
         .section-title h2::after {
             content: '';
@@ -195,192 +188,185 @@
             left: 50%;
             bottom: 0;
             transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
+            width: 60px;
+            height: 3px;
             background-color: var(--accent-color);
             border-radius: 2px;
         }
-        .section-title p {
-            font-size: 1.05rem; /* Slightly smaller */
+        .section-title p.lead {
+            font-size: 1rem;
             color: var(--secondary-text-on-black) !important;
             max-width: 600px;
             margin: 0.5rem auto 0 auto;
         }
-         .section-wrapper h3,
-        .section-wrapper p {
-            color: var(--primary-text-on-black) !important; /* Default for p within sections */
-        }
-         .section-wrapper .section-title p { /* Ensure subtitle color */
-             color: var(--secondary-text-on-black) !important;
-         }
+         .section-wrapper h3 { color: var(--text-light) !important; }
+         .section-wrapper p { color: var(--primary-text-on-black) !important; }
 
 
-        /* Card Design on Black Background */
-        .feature-grid-enhanced {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
-            gap: 2rem; /* Slightly reduced gap */
-        }
-        .feature-card,
-        .mission,
-        .vision,
-        .custom-solution .steps .step {
+        /* Card Design */
+        .feature-card {
             background: var(--card-bg-color-on-black) !important;
             border: 1px solid var(--border-color-on-black) !important;
             box-shadow: var(--card-shadow-on-black) !important;
             color: var(--primary-text-on-black) !important;
-            border-radius: var(--border-radius-main); /* Consistent radius */
+            border-radius: var(--border-radius-main);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
         }
-         .feature-card h3, .mission h3, .vision h3, .custom-solution .steps .step h3 {
-            color: var(--text-light) !important;
-         }
-         .feature-card p, .mission p, .vision p, .custom-solution .steps .step p {
-             color: var(--primary-text-on-black) !important;
-         }
-
-
         .feature-card:hover {
-            transform: translateY(-8px); /* Slightly less hover effect */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
         }
         .feature-card .card-image-top {
             width: 100%;
-            height: 200px; /* Slightly reduced height */
+            height: 200px;
             object-fit: cover;
-            opacity: 0.8; /* Keep a bit of opacity */
+            opacity: 0.8;
             transition: opacity 0.3s ease;
-            border-top-left-radius: var(--border-radius-main); /* Match card radius */
-            border-top-right-radius: var(--border-radius-main);
         }
-        .feature-card:hover .card-image-top {
-            opacity: 1;
-        }
-        .feature-card .card-content {
-            padding: 1.5rem; /* Reduced padding */
+        .feature-card:hover .card-image-top { opacity: 1; }
+        .feature-card .card-body {
+            padding: 1.5rem;
             text-align: left;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
-        .feature-card .card-content h3 {
-            font-size: 1.25rem; /* Reduced h3 size */
+        .feature-card .card-title {
+            font-size: 1.25rem;
             margin-top: 0;
             margin-bottom: 0.6rem;
-            font-weight: 600; /* Slightly less bold */
+            font-weight: 600;
         }
-        .feature-card .card-content h3 i {
+        .feature-card .card-title i {
             color: var(--accent-color);
             margin-right: 0.5rem;
         }
-        .feature-card .card-content p {
-            font-size: 0.9rem; /* Reduced p size */
+        .feature-card .card-text {
+            font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 1.2rem;
             flex-grow: 1;
         }
         .feature-card .card-action a,
         .feature-card .doc-link-styled {
-            font-size: 0.85rem; /* Reduced link size */
-            /* ... other styles remain ... */
+            font-size: 0.85rem;
+            display: inline-block;
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            align-self: flex-start;
+            margin-top: auto;
         }
          .feature-card .doc-link-styled {
-            padding: 0.5rem 1rem; /* Reduced button padding */
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 50px;
          }
-
-
-        /* About Us Mission/Vision Cards on Black Background */
-        .mission-vision-container {
-            gap: 2rem;
-            margin-top: 2.5rem;
+        .feature-card .card-action a:hover,
+        .feature-card .doc-link-styled:hover {
+            color: var(--accent-hover-color);
+            border-color: var(--accent-hover-color);
         }
+        .feature-card .doc-link-styled:hover {
+            background-color: var(--accent-hover-color);
+            color: var(--text-light);
+        }
+
+        /* About Us Mission/Vision Cards */
+        .mission-vision-container { gap: 2rem; margin-top: 2.5rem; }
         .mission, .vision {
-            padding: 2rem; /* Reduced padding */
+            padding: 2rem;
             border-top: 4px solid var(--accent-color);
         }
-        .mission-icon, .vision-icon {
-            font-size: 2.5rem; /* Reduced icon size */
-            margin-bottom: 1.2rem;
-        }
-        .mission h3, .vision h3 {
-            font-size: 1.5rem; /* Reduced h3 size */
-            margin-bottom: 0.8rem;
-        }
-        .mission p, .vision p { font-size: 0.95rem; }
+        .mission-icon, .vision-icon { font-size: 2.5rem; margin-bottom: 1.2rem; color: var(--accent-color); display: block; }
+        .mission h3, .vision h3 { font-size: 1.5rem; margin-bottom: 0.8rem;}
+        .mission p, .vision p { font-size: 0.95rem;}
 
-        /* Custom AI Solutions Section on Black Background */
-        .section-wrapper.bg-dark-custom { /* Already uses primary-color, ensure text is light */
-            padding-top: 60px;
-            padding-bottom: 60px;
-        }
+        /* Custom AI Solutions Section */
         .custom-solution .custom-solution-image.small-image {
-            max-height: 230px; /* Further reduce */
+            max-height: 230px;
             margin-bottom: 1.8rem;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--card-shadow-on-black);
         }
         .custom-solution .steps.horizontal-steps {
             gap: 1.2rem;
         }
         .custom-solution .steps .step {
-            padding: 1.2rem; /* Reduced padding */
-            border-left-width: 3px; /* Thinner accent line */
+            padding: 1.2rem;
+            border-left-width: 3px;
         }
         .custom-solution .steps .step h3 {
-            font-size: 1.2rem; /* Reduced h3 */
+            font-size: 1.2rem;
         }
         .custom-solution .steps .step h3::before {
             width: 30px;
             height: 30px;
-            font-size: 0.9rem; /* Reduced counter size */
+            font-size: 0.9rem;
             margin-right: 0.7rem;
         }
         .custom-solution .steps .step p {
-            font-size: 0.85rem; /* Reduced p size */
+            font-size: 0.85rem;
         }
 
 
-        /* Platform Table on Black Background */
+        /* Platform Table */
         .platform-table-wrapper { overflow-x: auto; margin-top: 1.8rem;}
-        table {
+        .table {
             box-shadow: var(--card-shadow-on-black);
+            border-radius: var(--border-radius-main);
+            overflow: hidden;
+            background-color: var(--card-bg-color-on-black);
+            color: var(--primary-text-on-black);
+            border: 1px solid var(--border-color-on-black);
         }
-        th, td {
+        .table thead th {
+            background-color: #00101F !important;
+            color: var(--text-light) !important;
+            font-weight: 600;
+            font-size: 0.95rem;
             border-bottom: 1px solid var(--border-color-on-black) !important;
-            padding: 1rem 1.2rem; /* Reduced padding */
+            border-top: none;
+             padding: 1rem 1.2rem;
         }
-        th {
-            background-color: #00101F !important; /* Even darker for table header */
-            font-size: 0.95rem; /* Reduced th font */
+        .table tbody td {
+            background-color: transparent;
+            color: var(--primary-text-on-black) !important;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color-on-black) !important;
+             padding: 1rem 1.2rem;
         }
-        td {
-            background-color: var(--card-bg-color-on-black) !important; /* Use card bg for cells */
-            font-size: 0.9rem; /* Reduced td font */
+        .table-striped > tbody > tr:nth-of-type(odd) > * {
+            --bs-table-accent-bg: var(--card-bg-color-on-black);
+             background-color: var(--card-bg-color-on-black) !important;
+             color: var(--primary-text-on-black) !important;
         }
-        tbody tr:nth-child(even) td {
-            background-color: #0C2038 !important; /* Darker zebra for black bg */
-        }
-        tbody tr:hover td {
+         .table-striped > tbody > tr:nth-of-type(even) > * {
+            background-color: #0C2038 !important;
+         }
+        .table-hover > tbody > tr:hover > * {
+            --bs-table-accent-bg: #152E4D;
             background-color: #152E4D !important;
+            color: var(--text-light) !important;
         }
 
-        /* Contact Section on Black Background */
-        .section-wrapper#contact.bg-pure-black, /* Added specificity */
-        .section-wrapper#contact { /* General rule for contact if not using bg-pure-black explicitly */
-            background-color: #000000 !important;
-        }
+
+        /* Contact Section */
+        .section-wrapper#contact { background-color: #000000 !important; }
         .section-wrapper#contact .section-title h2,
         .section-wrapper#contact .section-title p,
         .section-wrapper#contact h3,
-        .section-wrapper#contact p {
-            color: var(--text-light) !important;
-        }
-         .section-wrapper#contact p i {
-            color: var(--accent-color) !important;
-        }
-        .section-wrapper#contact a {
-            color: var(--accent-color) !important;
-        }
-         .section-wrapper#contact a:hover {
-            color: var(--accent-hover-color) !important;
-        }
+        .section-wrapper#contact p { color: var(--text-light) !important; }
+         .section-wrapper#contact p i { color: var(--accent-color) !important; }
+        .section-wrapper#contact a { color: var(--accent-color) !important; }
+         .section-wrapper#contact a:hover { color: var(--accent-hover-color) !important; }
         .section-wrapper#contact .contact-cta-button {
             background-color: var(--accent-color) !important;
             color: var(--text-light) !important;
@@ -393,75 +379,83 @@
 
         /* Footer */
         footer {
-            background: var(--nav-bg-color); /* Footer same as nav */
+            background: var(--nav-bg-color);
             color: var(--secondary-text-on-black);
-            padding: 2rem 1rem; /* Reduced padding */
-            margin-top: 3rem; /* Reduced margin */
+            padding: 2rem 1rem;
+            margin-top: 3rem;
             border-top: 1px solid var(--border-color-on-black);
         }
         footer p { font-size: 0.85rem; }
 
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
+        /* Responsive Adjustments for Bootstrap integration */
+        @media (max-width: 991.98px) {
             .hero-section-fullwidth h1 { font-size: 2.5rem; }
             .hero-section-fullwidth p { font-size: 1.1rem; }
+            .navbar-nav { margin-top: 1rem; }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
             nav {padding: 0.8rem 1rem;}
-            nav .nav-logo img { height: 40px; }
-            nav a { margin: 0 0.7rem; font-size: 0.9rem;}
-            .hero-section-fullwidth {min-height: 60vh;}
+            .hero-section-fullwidth {min-height: auto; padding-top: 4rem; padding-bottom: 4rem;}
             .hero-section-fullwidth h1 { font-size: 2rem; }
             .hero-section-fullwidth p { font-size: 1rem; }
-            .hero-buttons a { padding: 0.7rem 1.8rem; font-size: 0.9rem;}
+            .hero-buttons .btn { padding: 0.7rem 1.8rem; font-size: 0.9rem;}
             .section-title h2 { font-size: 1.8rem; }
-            .section-title p { font-size: 1rem; }
+            .section-title p.lead { font-size: 0.95rem; }
             .custom-solution .custom-solution-image.small-image { max-height: 180px; }
             .custom-solution .steps .step h3 { font-size: 1.1rem; }
             .custom-solution .steps .step p { font-size: 0.8rem; }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 575.98px) {
             .hero-section-fullwidth h1 { font-size: 1.6rem; }
             .hero-section-fullwidth p { font-size: 0.9rem; }
             .section-title h2 { font-size: 1.6rem; }
-            th, td { padding: 0.7rem 0.8rem; font-size: 0.85rem; }
-            .feature-card .card-content { padding: 1.2rem; }
-            .feature-card .card-content h3 { font-size: 1.1rem; }
-            .feature-card .card-content p { font-size: 0.85rem; }
+            .table th, .table td { padding: 0.7rem 0.8rem; font-size: 0.8rem; }
+            .feature-card .card-body { padding: 1.2rem; }
+            .feature-card .card-title { font-size: 1.1rem; }
+            .feature-card .card-text { font-size: 0.85rem; }
         }
 
     </style>
 </head>
 <body data-theme="dark" class="lang-zh">
 
-    <nav>
-        <div class="nav-logo">
-            <a href="#"><img alt="宏策智能 Logo" src="https://source.unsplash.com/random/150x50?logo,tech,abstract,minimalist,white&sitelogo"/></a>
-        </div>
-        <div class="nav-links">
-            <a href="#about">關於我們</a>
-            <a href="#solutions">解決方案</a>
-            <a href="#products">產品功能</a>
-            <a href="#cases">成功案例</a>
-            <a href="#custom-ai-solutions">客製化方案</a>
-            <a href="#platform-section">平台方案</a>
-            <a href="#docs">文件中心</a>
-            <a href="#contact">聯絡我們</a>
-        </div>
-        <div class="nav-buttons">
-            <button id="lang-toggle" class="toggle-btn">EN</button>
-            <button id="theme-toggle" class="toggle-btn">☀️</button>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid px-lg-5">
+            <a class="navbar-brand" href="#">
+                <img alt="宏策智能 Logo" src="https://source.unsplash.com/random/150x45?logo,tech,abstract,minimalist,white&sitelogo"/>
+                 <!-- Removed the erroneous comment here -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavContent" aria-controls="navbarNavContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#about">關於我們</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#solutions">解決方案</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">產品功能</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cases">成功案例</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#custom-ai-solutions">客製化方案</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#platform-section">平台方案</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#docs">文件中心</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">聯絡我們</a></li>
+                </ul>
+                <div class="d-flex nav-buttons align-items-center mt-2 mt-lg-0">
+                    <button id="lang-toggle" class="toggle-btn">EN</button>
+                    <button id="theme-toggle" class="toggle-btn">☀️</button>
+                </div>
+            </div>
         </div>
     </nav>
 
+    <!-- ... (Rest of the HTML Body content from previous correct version) ... -->
     <section class="hero-section-fullwidth">
         <div id="tsparticles-background"></div>
         <div class="content-wrapper">
             <h1>AI 驅動的智慧決策與產業解決方案提供者</h1>
             <p>Create Value through AI-Driven Intelligence. 宏策智能致力於消除企業在 AI 分析上的障礙，提供全面且高效的解決方案，協助您引領產業變革。</p>
             <div class="hero-buttons">
-                <a href="#solutions" class="cta-button">探索解決方案</a>
-                <a href="#contact" class="secondary-button">預約 Demo</a>
+                <a href="#solutions" class="btn btn-primary-custom">探索解決方案</a>
+                <a href="#contact" class="btn btn-outline-light-custom">預約 Demo</a>
             </div>
         </div>
     </section>
@@ -470,18 +464,22 @@
         <div class="container">
             <div class="section-title">
                 <h2>關於我們</h2>
-                <p>宏策智能是一家專注於 AI 模型建構與實地部署的科技公司。團隊成員來自 AI、能源、醫療、製造、通路與視覺化領域，致力於協助產業智慧升級。</p>
+                <p class="lead">宏策智能是一家專注於 AI 模型建構與實地部署的科技公司。團隊成員來自 AI、能源、醫療、製造、通路與視覺化領域，致力於協助產業智慧升級。</p>
             </div>
-            <div class="mission-vision-container">
-                <div class="mission">
-                    <span class="mission-icon"><i class="fas fa-bullseye"></i></span>
-                    <h3>我們的使命</h3>
-                    <p>將複雜的資料轉為有價值的決策依據，驅動企業成長與創新。</p>
+            <div class="row mission-vision-container gy-4">
+                <div class="col-lg-6 d-flex">
+                    <div class="mission w-100">
+                        <span class="mission-icon"><i class="fas fa-bullseye"></i></span>
+                        <h3>我們的使命</h3>
+                        <p>將複雜的資料轉為有價值的決策依據，驅動企業成長與創新。</p>
+                    </div>
                 </div>
-                <div class="vision">
-                    <span class="vision-icon"><i class="fas fa-eye"></i></span>
-                    <h3>我們的願景</h3>
-                    <p>成為 AI 在能源、醫療與製造領域的首選實踐者與整合者。</p>
+                <div class="col-lg-6 d-flex">
+                    <div class="vision w-100">
+                        <span class="vision-icon"><i class="fas fa-eye"></i></span>
+                        <h3>我們的願景</h3>
+                        <p>成為 AI 在能源、醫療與製造領域的首選實踐者與整合者。</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -491,39 +489,47 @@
         <div class="container">
             <div class="section-title">
                 <h2>解決方案</h2>
-                <p>我們提供多樣化的 AI 解決方案，滿足不同產業的特定需求。</p>
+                <p class="lead">我們提供多樣化的 AI 解決方案，滿足不同產業的特定需求。</p>
             </div>
-            <div class="feature-grid-enhanced">
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?battery,energy,graph,dark&s=sol1" class="card-image-top" alt="電池壽命預測概念圖">
-                    <div class="card-content">
-                        <h3><i class="fas fa-battery-full"></i> 電池壽命預測平台</h3>
-                        <p>適用於儲能案場、UPS 系統、能源租賃，最大化電池效能與壽命。</p>
-                        <div class="card-action"><a href="#">了解更多 &rarr;</a></div>
+            <div class="row g-4"> 
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?battery,energy,graph,dark&s=sol1" class="card-image-top" alt="電池壽命預測概念圖">
+                        <div class="card-body"> 
+                            <h3 class="card-title"><i class="fas fa-battery-full"></i> 電池壽命預測平台</h3>
+                            <p class="card-text">適用於儲能案場、UPS 系統、能源租賃，最大化電池效能與壽命。</p>
+                            <div class="card-action mt-auto"><a href="#">了解更多 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?factory,automation,predictive,dark&s=sol2" class="card-image-top" alt="預測性維護概念圖">
-                    <div class="card-content">
-                        <h3><i class="fas fa-tools"></i> 預測性維護模組</h3>
-                        <p>透過 AI 提前診斷設備異常，有效降低維修成本與停機時間。</p>
-                        <div class="card-action"><a href="#">了解更多 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?factory,automation,predictive,dark&s=sol2" class="card-image-top" alt="預測性維護概念圖">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-tools"></i> 預測性維護模組</h3>
+                            <p class="card-text">透過 AI 提前診斷設備異常，有效降低維修成本與停機時間。</p>
+                            <div class="card-action mt-auto"><a href="#">了解更多 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?logistics,shipping,mobile,bot,dark&s=sol3" class="card-image-top" alt="智慧報關系統示意">
-                    <div class="card-content">
-                        <h3><i class="fas fa-file-export"></i> 智慧報關推播系統</h3>
-                        <p>整合 LINE Bot 與 Google Sheets，自動化通知與查詢，提升效率。</p>
-                        <div class="card-action"><a href="#">了解更多 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?logistics,shipping,mobile,bot,dark&s=sol3" class="card-image-top" alt="智慧報關系統示意">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-file-export"></i> 智慧報關推播系統</h3>
+                            <p class="card-text">整合 LINE Bot 與 Google Sheets，自動化通知與查詢，提升效率。</p>
+                            <div class="card-action mt-auto"><a href="#">了解更多 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?sustainability,report,green,data,dark&s=sol4" class="card-image-top" alt="ESG/CBAM 報表自動化">
-                    <div class="card-content">
-                        <h3><i class="fas fa-leaf"></i> ESG/CBAM 報表 API</h3>
-                        <p>自動化碳稅申報流程，協助企業符合國際環保法規要求。</p>
-                        <div class="card-action"><a href="#">了解更多 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?sustainability,report,green,data,dark&s=sol4" class="card-image-top" alt="ESG/CBAM 報表自動化">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-leaf"></i> ESG/CBAM 報表 API</h3>
+                            <p class="card-text">自動化碳稅申報流程，協助企業符合國際環保法規要求。</p>
+                            <div class="card-action mt-auto"><a href="#">了解更多 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -534,39 +540,47 @@
         <div class="container">
             <div class="section-title">
                 <h2>產品功能</h2>
-                <p>探索我們強大的 AI 產品核心功能，為您的業務賦能。</p>
+                <p class="lead">探索我們強大的 AI 產品核心功能，為您的業務賦能。</p>
             </div>
-            <div class="feature-grid-enhanced">
-                 <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?dashboard,analytics,battery,chart,dark&p=prod1" class="card-image-top" alt="電池健康分析模型儀表板">
-                    <div class="card-content">
-                        <h3><i class="fas fa-chart-line"></i> 電池健康分析模型</h3>
-                        <p>精準 RUL (剩餘壽命) 預測，優化電池資產管理。</p>
-                         <div class="card-action"><a href="#">功能詳情 &rarr;</a></div>
+            <div class="row g-4">
+                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?dashboard,analytics,battery,chart,dark&p=prod1" class="card-image-top" alt="電池健康分析模型儀表板">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-chart-line"></i> 電池健康分析模型</h3>
+                            <p class="card-text">精準 RUL (剩餘壽命) 預測，優化電池資產管理。</p>
+                             <div class="card-action mt-auto"><a href="#">功能詳情 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?report,document,automation,chart,dark&p=prod2" class="card-image-top" alt="自動生成報告示意">
-                    <div class="card-content">
-                        <h3><i class="fas fa-file-alt"></i> 自動生成維護建議報表</h3>
-                        <p>提供清晰、可執行的維護建議，簡化決策流程。</p>
-                         <div class="card-action"><a href="#">功能詳情 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?report,document,automation,chart,dark&p=prod2" class="card-image-top" alt="自動生成報告示意">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-file-alt"></i> 自動生成維護建議報表</h3>
+                            <p class="card-text">提供清晰、可執行的維護建議，簡化決策流程。</p>
+                             <div class="card-action mt-auto"><a href="#">功能詳情 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?data,visualization,dashboard,api,dark&p=prod3" class="card-image-top" alt="客製化資料儀表板">
-                     <div class="card-content">
-                        <h3><i class="fas fa-desktop"></i> 資料看板 Dashboard</h3>
-                        <p>彈性 API 串接，打造符合需求的即時數據監控中心。</p>
-                         <div class="card-action"><a href="#">功能詳情 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?data,visualization,dashboard,api,dark&p=prod3" class="card-image-top" alt="客製化資料儀表板">
+                         <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-desktop"></i> 資料看板 Dashboard</h3>
+                            <p class="card-text">彈性 API 串接，打造符合需求的即時數據監控中心。</p>
+                             <div class="card-action mt-auto"><a href="#">功能詳情 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?mobile,chat,notification,app,dark&p=prod4" class="card-image-top" alt="LINE 推播模組手機畫面">
-                    <div class="card-content">
-                        <h3><i class="fab fa-line"></i> LINE 推播模組</h3>
-                        <p>具備使用者權限管理，確保資訊安全與精準傳達。</p>
-                        <div class="card-action"><a href="#">功能詳情 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?mobile,chat,notification,app,dark&p=prod4" class="card-image-top" alt="LINE 推播模組手機畫面">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fab fa-line"></i> LINE 推播模組</h3>
+                            <p class="card-text">具備使用者權限管理，確保資訊安全與精準傳達。</p>
+                            <div class="card-action mt-auto"><a href="#">功能詳情 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -577,77 +591,91 @@
         <div class="container">
             <div class="section-title">
                 <h2>成功案例</h2>
-                <p>了解宏策智能如何協助各行各業的客戶實現卓越成就。</p>
+                <p class="lead">了解宏策智能如何協助各行各業的客戶實現卓越成就。</p>
             </div>
-            <div class="feature-grid-enhanced">
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?solar,wind,energy,farm,dark&c=case1" class="card-image-top" alt="綠能電池場實景或示意">
-                    <div class="card-content">
-                        <h3><i class="fas fa-solar-panel"></i> 綠能電池場</h3>
-                        <p>導入壽命預測平台，成功節省 15% 電池更換成本，提升運營效益。</p>
-                        <div class="card-action"><a href="#">案例研究 &rarr;</a></div>
+            <div class="row g-4">
+                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?solar,wind,energy,farm,dark&c=case1" class="card-image-top" alt="綠能電池場實景或示意">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-solar-panel"></i> 綠能電池場</h3>
+                            <p class="card-text">導入壽命預測平台，成功節省 15% 電池更換成本，提升運營效益。</p>
+                            <div class="card-action mt-auto"><a href="#">案例研究 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?pharmacy,retail,store,modern,dark&c=case2" class="card-image-top" alt="現代化連鎖藥局內部">
-                    <div class="card-content">
-                        <h3><i class="fas fa-pills"></i> 連鎖藥局</h3>
-                        <p>AI 銷售預測平台，提升補貨效率達 40%，減少庫存浪費。</p>
-                        <div class="card-action"><a href="#">案例研究 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?pharmacy,retail,store,modern,dark&c=case2" class="card-image-top" alt="現代化連鎖藥局內部">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-pills"></i> 連鎖藥局</h3>
+                            <p class="card-text">AI 銷售預測平台，提升補貨效率達 40%，減少庫存浪費。</p>
+                            <div class="card-action mt-auto"><a href="#">案例研究 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?logistics,global,shipping,container,dark&c=case3" class="card-image-top" alt="國際物流或報關作業場景">
-                     <div class="card-content">
-                        <h3><i class="fas fa-globe-americas"></i> 跨境報關業者</h3>
-                        <p>導入 LINE Bot 查驗通知系統，加速通關流程，提升客戶滿意度。</p>
-                        <div class="card-action"><a href="#">案例研究 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?logistics,global,shipping,container,dark&c=case3" class="card-image-top" alt="國際物流或報關作業場景">
+                         <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-globe-americas"></i> 跨境報關業者</h3>
+                            <p class="card-text">導入 LINE Bot 查驗通知系統，加速通關流程，提升客戶滿意度。</p>
+                            <div class="card-action mt-auto"><a href="#">案例研究 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?factory,industry,sustainability,technology,dark&c=case4" class="card-image-top" alt="能源管理系統與CBAM整合示意">
-                    <div class="card-content">
-                        <h3><i class="fas fa-cogs"></i> EMS 製造業合作案</h3>
-                        <p>協助建置 EMS + CBAM 整合平台，實現永續生產與合規目標。</p>
-                        <div class="card-action"><a href="#">案例研究 &rarr;</a></div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?factory,industry,sustainability,technology,dark&c=case4" class="card-image-top" alt="能源管理系統與CBAM整合示意">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-cogs"></i> EMS 製造業合作案</h3>
+                            <p class="card-text">協助建置 EMS + CBAM 整合平台，實現永續生產與合規目標。</p>
+                            <div class="card-action mt-auto"><a href="#">案例研究 &rarr;</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="section-wrapper" id="custom-ai-solutions"> <!-- This section will use the specific bg-dark-custom styles if you keep that class, or default dark from body -->
+    <div class="section-wrapper" id="custom-ai-solutions">
         <div class="container custom-solution">
              <div class="section-title">
                 <h2>客製化 AI 解決方案</h2>
-                 <p>我們為您的獨特挑戰量身打造 AI 解決方案。</p>
+                 <p class="lead">我們為您的獨特挑戰量身打造 AI 解決方案。</p>
              </div>
-            <img src="https://source.unsplash.com/random/800x300?process,flowchart,AI,solution,teamwork,dark&c=custom" alt="客製化 AI 解決方案流程圖" class="custom-solution-image small-image">
-            <div class="steps horizontal-steps">
-                <div class="step">
-                    <h3>深度需求分析</h3>
-                    <p>宏策智能團隊與您緊密合作，深入了解企業特定需求、痛點與營運目標，共同定義 AI 解決方案的範疇與預期效益。</p>
+            <img src="https://source.unsplash.com/random/800x300?process,flowchart,AI,solution,teamwork,dark&c=custom" alt="客製化 AI 解決方案流程圖" class="custom-solution-image small-image img-fluid rounded mb-4">
+            <div class="row g-3 steps horizontal-steps">
+                <div class="col-lg-4 d-flex align-items-stretch">
+                    <div class="step">
+                        <h3>深度需求分析</h3>
+                        <p>宏策智能團隊與您緊密合作，深入了解企業特定需求、痛點與營運目標，共同定義 AI 解決方案的範疇與預期效益。</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <h3>精準方案設計</h3>
-                    <p>根據需求分析結果，量身打造 AI 模型與系統架構，確保方案的技術可行性、系統兼容性與未來擴展性，實現智能化管理。</p>
+                <div class="col-lg-4 d-flex align-items-stretch">
+                    <div class="step">
+                        <h3>精準方案設計</h3>
+                        <p>根據需求分析結果，量身打造 AI 模型與系統架構，確保方案的技術可行性、系統兼容性與未來擴展性，實現智能化管理。</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <h3>高效實施部署與持續優化</h3>
-                    <p>提供完善的硬體整合、軟體部署與技術支援。方案上線後，持續監控成效並提供維護服務與模型優化，確保 AI 方案發揮最大價值。</p>
+                <div class="col-lg-4 d-flex align-items-stretch">
+                    <div class="step">
+                        <h3>高效實施部署與持續優化</h3>
+                        <p>提供完善的硬體整合、軟體部署與技術支援。方案上線後，持續監控成效並提供維護服務與模型優化，確保 AI 方案發揮最大價值。</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="section-wrapper" id="platform-section">
+     <div class="section-wrapper" id="platform-section">
         <div class="container">
             <div class="section-title">
                  <h2>平台方案</h2>
-                 <p>我們標準化的平台方案，助您快速導入 AI 應用。</p>
+                 <p class="lead">我們標準化的平台方案，助您快速導入 AI 應用。</p>
             </div>
-            <div class="platform-table-wrapper">
-                <table>
+            <div class="table-responsive platform-table-wrapper">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>模組名稱</th>
@@ -686,82 +714,96 @@
         <div class="container">
             <div class="section-title">
                 <h2>文件中心</h2>
-                <p>獲取詳細的產品資訊、技術文檔與產業洞察。</p>
+                <p class="lead">獲取詳細的產品資訊、技術文檔與產業洞察。</p>
             </div>
-            <div class="feature-grid-enhanced">
-                <div class="feature-card">
-                     <img src="https://source.unsplash.com/random/400x220?brochure,document,cover,tech,dark&d=doc1" class="card-image-top" alt="產品型錄封面示意">
-                    <div class="card-content">
-                        <h3><i class="fas fa-book-open"></i> 宏策智能產品型錄</h3>
-                        <p>詳細了解我們的全方位 AI 解決方案與產品規格。</p>
-                        <a href="#" class="doc-link-styled">下載文件</a>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                         <img src="https://source.unsplash.com/random/400x220?brochure,document,cover,tech,dark&d=doc1" class="card-image-top" alt="產品型錄封面示意">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-book-open"></i> 宏策智能產品型錄</h3>
+                            <p class="card-text">詳細了解我們的全方位 AI 解決方案與產品規格。</p>
+                            <a href="#" class="doc-link-styled mt-auto">下載文件</a>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?api,code,documentation,interface,dark&d=doc2" class="card-image-top" alt="API 文件示意">
-                     <div class="card-content">
-                        <h3><i class="fas fa-code-branch"></i> API 串接說明文件</h3>
-                        <p>取得詳細的 API 技術文檔，輕鬆整合現有系統。</p>
-                        <a href="#" class="doc-link-styled">下載文件</a>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?api,code,documentation,interface,dark&d=doc2" class="card-image-top" alt="API 文件示意">
+                         <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-code-branch"></i> API 串接說明文件</h3>
+                            <p class="card-text">取得詳細的 API 技術文檔，輕鬆整合現有系統。</p>
+                            <a href="#" class="doc-link-styled mt-auto">下載文件</a>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                     <img src="https://source.unsplash.com/random/400x220?sdk,software,integration,guide,dev,dark&d=doc3" class="card-image-top" alt="SDK 文件示意">
-                    <div class="card-content">
-                        <h3><i class="fas fa-microchip"></i> 模型導入與 SDK 文件</h3>
-                        <p>我們的模型導入流程與 SDK 說明，加速您的 AI 應用開發。</p>
-                        <a href="#" class="doc-link-styled">下載文件</a>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                         <img src="https://source.unsplash.com/random/400x220?sdk,software,integration,guide,dev,dark&d=doc3" class="card-image-top" alt="SDK 文件示意">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-microchip"></i> 模型導入與 SDK 文件</h3>
+                            <p class="card-text">我們的模型導入流程與 SDK 說明，加速您的 AI 應用開發。</p>
+                            <a href="#" class="doc-link-styled mt-auto">下載文件</a>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-card">
-                    <img src="https://source.unsplash.com/random/400x220?whitepaper,esg,sustainability,report,green,dark&d=doc4" class="card-image-top" alt="ESG 白皮書封面示意">
-                    <div class="card-content">
-                        <h3><i class="fas fa-file-invoice-dollar"></i> ESG/CBAM 模組白皮書</h3>
-                        <p>深入解析碳稅模組如何協助企業達成永續目標。</p>
-                        <a href="#" class="doc-link-styled">下載文件</a>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="feature-card">
+                        <img src="https://source.unsplash.com/random/400x220?whitepaper,esg,sustainability,report,green,dark&d=doc4" class="card-image-top" alt="ESG 白皮書封面示意">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-file-invoice-dollar"></i> ESG/CBAM 模組白皮書</h3>
+                            <p class="card-text">深入解析碳稅模組如何協助企業達成永續目標。</p>
+                            <a href="#" class="doc-link-styled mt-auto">下載文件</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="section-wrapper" id="contact"> <!-- Default dark background -->
-        <div class="container">
+    <div class="section-wrapper" id="contact">
+        <div class="container text-center">
              <div class="section-title">
                 <h2>聯絡我們</h2>
-                <p>我們期待與您交流，共同探索 AI 如何為您的業務帶來變革。</p>
+                <p class="lead">我們期待與您交流，共同探索 AI 如何為您的業務帶來變革。</p>
             </div>
-            <h3>宏策智能有限公司</h3>
-            <p><i class="fas fa-envelope"></i> 信箱: <a href="mailto:megaintelligence2024@gmail.com">megaintelligence2024@gmail.com</a></p>
-            <p><i class="fas fa-map-marker-alt"></i> 地址: 台北市內湖區行善路417巷32號3樓</p>
-            <p><i class="fas fa-globe"></i> 網站: <a href="https://mega-intelligence.com.tw" target="_blank" rel="noopener noreferrer">https://mega-intelligence.com.tw</a></p>
-            <a href="mailto:megaintelligence2024@gmail.com?subject=AI解決方案諮詢與Demo預約" class="contact-cta-button">預約諮詢或 Demo</a>
+            <h3 class="mb-3">宏策智能有限公司</h3>
+            <p class="mb-2"><i class="fas fa-envelope"></i> 信箱: <a href="mailto:megaintelligence2024@gmail.com">megaintelligence2024@gmail.com</a></p>
+            <p class="mb-2"><i class="fas fa-map-marker-alt"></i> 地址: 台北市內湖區行善路417巷32號3樓</p>
+            <p class="mb-4"><i class="fas fa-globe"></i> 網站: <a href="https://mega-intelligence.com.tw" target="_blank" rel="noopener noreferrer">https://mega-intelligence.com.tw</a></p>
+            <a href="mailto:megaintelligence2024@gmail.com?subject=AI解決方案諮詢與Demo預約" class="btn btn-primary-custom contact-cta-button">預約諮詢或 Demo</a>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 宏策智能股份有限公司. All rights reserved.</p>
+    <footer class="py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 宏策智能股份有限公司. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.10.1/tsparticles.bundle.min.js"></script>
     <script>
+        // Your existing JavaScript for theme/lang toggle and tsParticles
         document.addEventListener('DOMContentLoaded', () => {
             const themeToggle = document.getElementById('theme-toggle');
             const langToggle = document.getElementById('lang-toggle');
             const body = document.body;
 
-            // Default to dark theme if no preference stored, also update body class
             const savedTheme = localStorage.getItem('theme');
-            if (!savedTheme || savedTheme === 'dark') { // Default to dark
+            if (!savedTheme || savedTheme === 'dark') {
                 body.setAttribute('data-theme', 'dark');
-                body.classList.add('dark-mode'); // Ensure class is added for CSS targeting
+                body.classList.add('dark-mode');
                 if(themeToggle) themeToggle.textContent = '☀️';
-            } else { // Must be 'light'
+                document.body.style.backgroundColor = 'var(--pure-black-bg)';
+                document.body.style.color = 'var(--primary-text-on-black)';
+            } else {
                  body.setAttribute('data-theme', 'light');
-                 body.classList.remove('dark-mode'); // Ensure class is removed
+                 body.classList.remove('dark-mode');
                  if(themeToggle) themeToggle.textContent = '🌙';
+                 document.body.style.backgroundColor = ''; 
+                 document.body.style.color = '';
             }
 
 
@@ -775,18 +817,18 @@
 
                     if (newTheme === 'dark') {
                         body.classList.add('dark-mode');
-                        document.body.style.backgroundColor = 'var(--pure-black-bg)'; // Explicitly set for dark
+                        document.body.style.backgroundColor = 'var(--pure-black-bg)';
                         document.body.style.color = 'var(--primary-text-on-black)';
                     } else {
                         body.classList.remove('dark-mode');
-                        document.body.style.backgroundColor = ''; // Revert to stylesheet default for light
-                        document.body.style.color = ''; // Revert
+                        document.body.style.backgroundColor = ''; 
+                        document.body.style.color = '';
                     }
                 });
             }
 
             if (langToggle) {
-                const currentLang = localStorage.getItem('lang') || 'zh';
+                 const currentLang = localStorage.getItem('lang') || 'zh';
                 body.classList.add(currentLang === 'zh' ? 'lang-zh' : 'lang-en');
                 langToggle.textContent = currentLang === 'zh' ? 'EN' : 'ZH';
 
@@ -811,111 +853,36 @@
                 tsParticles.load(particlesContainerId, {
                     fpsLimit: 60,
                     particles: {
-                        number: {
-                            value: 60,
-                            density: {
-                                enable: true,
-                                value_area: 800
-                            }
-                        },
-                        color: {
-                            value: ["#00E0C6", "#00A896", "#FFFFFF", "#4FC3F7"]
-                        },
-                        shape: {
-                            type: ["triangle", "polygon"],
-                            polygon: {
-                                nb_sides: 6
-                            }
-                        },
-                        opacity: {
-                            value: {min: 0.3, max: 0.8},
-                            animation: {
-                                enable: true,
-                                speed: 0.7,
-                                minimumValue: 0.2,
-                                sync: false
-                            }
-                        },
-                        size: {
-                            value: {min: 2, max: 5},
-                             animation: {
-                                enable: true,
-                                speed: 3,
-                                minimumValue: 1,
-                                sync: false
-                            }
-                        },
-                        links: {
-                            enable: true,
-                            distance: 130,
-                            color: "rgba(255, 255, 255, 0.25)",
-                            opacity: 0.25,
-                            width: 1
-                        },
-                        move: {
-                            enable: true,
-                            speed: 1.2,
-                            direction: "none",
-                            random: true,
-                            straight: false,
-                            outModes: {
-                                default: "out"
-                            }
-                        }
+                        number: { value: 60, density: { enable: true, value_area: 800 }},
+                        color: { value: ["#00E0C6", "#00A896", "#FFFFFF", "#4FC3F7"] },
+                        shape: { type: ["triangle", "polygon"], polygon: { nb_sides: 6 }},
+                        opacity: { value: {min: 0.3, max: 0.8}, animation: { enable: true, speed: 0.7, minimumValue: 0.2, sync: false }},
+                        size: { value: {min: 2, max: 5}, animation: { enable: true, speed: 3, minimumValue: 1, sync: false }},
+                        links: { enable: true, distance: 130, color: "rgba(255, 255, 255, 0.25)", opacity: 0.25, width: 1 },
+                        move: { enable: true, speed: 1.2, direction: "none", random: true, straight: false, outModes: { default: "out" }}
                     },
                     interactivity: {
                         detectsOn: "canvas",
                         events: {
-                            onHover: {
-                                enable: true,
-                                mode: "trail",
-                            },
-                            onClick: {
-                                enable: true,
-                                mode: "push"
-                            },
+                            onHover: { enable: true, mode: "trail" },
+                            onClick: { enable: true, mode: "push" },
                             resize: true
                         },
                         modes: {
-                            grab: {
-                                distance: 150,
-                                links: {
-                                    opacity: 0.5
-                                }
-                            },
-                            repulse: {
-                                distance: 100,
-                                duration: 0.4
-                            },
-                            push: {
-                                quantity: 3
-                            },
-                            bubble: {
-                                distance: 150,
-                                size: 15,
-                                duration: 2,
-                                opacity: 0.8,
-                                color: "#ffffff"
-                            },
-                            trail: {
-                                delay: 0.05,
-                                quantity: 2,
-                                particles: {
-                                    color: { value: ["#FFD700", "#FF8C00"] },
-                                    size: { value: {min: 1, max: 3} },
-                                    opacity: { value: {min: 0.1, max: 0.5}, animation: {enable: true, speed:1, minimumValue:0.05, sync:false}},
-                                    links: { enable: false}
-                                }
-                            }
+                            grab: { distance: 150, links: { opacity: 0.5 }},
+                            repulse: { distance: 100, duration: 0.4 },
+                            push: { quantity: 3 },
+                            bubble: { distance: 150, size: 15, duration: 2, opacity: 0.8, color: "#ffffff" },
+                            trail: { delay: 0.05, quantity: 2, particles: { color: { value: ["#FFD700", "#FF8C00"] }, size: { value: {min: 1, max: 3} }, opacity: { value: {min: 0.1, max: 0.5}, animation: {enable: true, speed:1, minimumValue:0.05, sync:false}}, links: { enable: false}}}
                         }
                     },
                     detectRetina: true,
                     background: {
-                         color: "var(--pure-black-bg)" // Set particle background to pure black
+                         color: "var(--pure-black-bg)"
                     }
                 });
             }
         });
     </script>
 </body>
-</html>
+</html>這是最新的程式碼，請依照上面圖片紅框的文字刪除，謝謝
